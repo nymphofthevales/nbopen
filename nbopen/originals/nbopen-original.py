@@ -6,9 +6,8 @@ import webbrowser
 
 from jupyter_server import serverapp
 from jupyter_server.utils import url_path_join, url_escape
-from jupyterlab_server import app
+from notebook import app as notebookapp
 import nbformat
-
 
 def find_best_server(filename):
     servers = [si for si in serverapp.list_running_servers()
@@ -48,7 +47,7 @@ def nbopen(filename):
         argv = ["--ServerApp.file_to_run", os.path.abspath(filename),
                 "--ServerApp.root_dir", nbdir,
                 "--ServerApp.open_browser", "True"]
-        app.launch_new_instance(argv=argv) 
+        notebookapp.launch_new_instance(argv=argv)
 
 def nbnew(filename):
     if not filename.endswith('.ipynb'):
