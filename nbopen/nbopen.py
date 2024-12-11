@@ -28,7 +28,7 @@ def nbopen(filename):
         path = os.path.relpath(filename, start=server_inf['root_dir'])
         if os.sep != '/':
             path = path.replace(os.sep, '/')
-        urlseg = 'tree' if os.path.isdir(filename) else 'notebooks'
+        urlseg = 'tree' if os.path.isdir(filename) else '/lab/tree/'
         url = url_path_join(server_inf['url'], urlseg, url_escape(path))
         sa = serverapp.ServerApp.instance()
         sa.load_config_file()
